@@ -35,6 +35,19 @@ export default defineConfig<TestOptions>({
   },
   retries: 1, 
   reporter: [
+
+        process.env.CI ? ["dot"] : ["list"],
+
+    [
+      "@argos-ci/playwright/reporter",
+      {
+        // Upload to Argos on CI only.
+        uploadToArgos: !!process.env.CI,
+
+        // Set your Argos token (required if not using GitHub Actions).
+        //token: "argos_666bf9e8de55989acd9efc01c656f7f9a1",
+      },
+    ],
               ['json', {outputFile: 'test-results/jsonReport.json'}],
               ['junit', {outputFile: 'test-results/junitReport.xml'}],
              // ['allure-playwright'],
@@ -44,7 +57,8 @@ export default defineConfig<TestOptions>({
   use: {
      globalsQaUrl: 'https://www.globalsqa.com/demo-site/draganddrop/',
      //baseURL: 'http://localhost:4200/',
-    trace: 'on-first-retry', 
+    trace: 'on-first-retry',
+    screenshot: "only-on-failure",
      baseURL: process.env.DEV === '1' ? 'http://localhost:4201/'
         : process.env.STAGING == '1' ? 'http://localhost:4202/'
         : 'http://localhost:4200/', 

@@ -63,6 +63,7 @@
     "@angular/compiler-cli": "^14.2.12",
     "@angular/language-service": "14.2.12",
     "@applitools/eyes-playwright": "^1.37.3",
+    "@argos-ci/playwright": "^5.0.4",
     "@compodoc/compodoc": "^1.1.19",
     "@faker-js/faker": "^9.8.0",
     "@fortawesome/fontawesome-free": "^5.2.0",
@@ -84,10 +85,9 @@
   "bundleDependencies": [
     "typescript"
   ],
-
   "browserslist": [
-  ">0.5%",
-  "last 2 versions",
-  "not dead"
-]
+    ">0.5%",
+    "last 2 versions",
+    "not dead"
+  ]
 }
